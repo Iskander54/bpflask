@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+      
+   <!-- style css -->
+   
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+   <!-- Responsive-->
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/responsive.css') }}">
+   
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.mCustomScrollbar.min.css') }}">
+   <!-- Tweaks for older IEs-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+   <!-- fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet">
+   <!-- owl stylesheets --> 
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+   <!-- Favicon -->
+   <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='/images/favicon_io/apple-touch-icon.png')}}">
+   <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='/images/favicon_io/favicon-32x32.png')}}">
+   <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='/images/favicon_io/favicon-16x16.png')}}">
+   <link rel="manifest" href="{{url_for('static', filename='/images/favicon_io/site.webmanifest')}}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   {% if title %}
+   <title>App- {{ title }}</title>
+   {% else %}
+   <title>App</title>
+   {% endif %}
+</head>
+
+<body>
+   
+<header class="site-header">
+
+   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="display:flex">
+
+      <a class="navbar-brand" href="{{_('accueil')}}">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+         aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+         <span></span>
+         <span></span>
+         <span></span>
+      </button>
+
+      <div class="flags">
+         <a href="{{ url_for(request.endpoint, lang_code='en') }}"><img class="navbar-img" src="{{ url_for('static', filename='flags/us-flag.png') }}"></a>
+         <a href="{{ url_for(request.endpoint, lang_code='fr') }}"><img class="navbar-img" src="{{ url_for('static', filename='flags/fr-flag.png') }}"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="true">
+                  {{_('Le cabinet')}}
+               </a>
+            </li>
+            
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_dos" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="true">
+                  {{_('Nos expertises')}}
+               </a>
+            </li>
+
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_three" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="true" >
+               {{_('Actualités')}}
+            </a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link" href="{{_('nouscontacter')}}">{{_('Nous contacter')}}</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link disabled" href="#">{{_('Espace clients')}}</a>
+            </li>
+            <li class="nav-item" style="margin-top: 15px;">
+               <a href="https://www.instagram.com/medeo_partners/" target="_blank"><i class="fa-brands fa-instagram fa-xl"></i></a>
+               <a href="https://www.linkedin.com/company/medeo-partners/" target="_blank"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+               <a href="https://wa.me/33669066804/?text=Hello" target="_blank"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
+            </li>
+         </ul>
+
+      </div>
+   </nav>
+
+</header>
+<main role="main" class="container pt-130">
+   {% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+   {% for category, message in messages %}
+   <div class="alert alert-{{ category }}">
+      {{ message }}
+   </div>
+   {% endfor %}
+   {% endif %}
+   {% endwith %}
+</main>
+
+
+{% block content %}{% endblock %}
+
+        <!-- footer section start -->
+        <div class="footer_section">
+         <div class="container_footer">
+            <div class="footer_section_2">
+               <div class="row">
+                  <div class="col">
+                     <h2 class="footer_taital">{{_('À propos')}}</h2>
+                     <a class="footer_text" href=""></a>
+                     <a class="footer_text" href=""></a>
+                     <a class="footer_text" href=""></a>
+
+                  </div>
+                  <div class="col">
+                     <h2 class="footer_taital">{{_('Adresse')}}</h2>
+                     <p class="location_text">
+                        <img src="{{url_for('static', filename='images/map-icon.png') }}"><span class="padding_left_10"><a href=""></a></span></br>
+                        <img src="{{url_for('static', filename='images/call-icon.png') }}"><span class="padding_left_10"><a href="#"></a></span></br>            
+                        <img src="{{url_for('static', filename='images/mail-icon.png') }}"><span class="padding_left_10"><a href=""></a></span></br>
+                     </p>
+                  </div>
+
+                  <div class="col col_footer">
+                     <h2 class="footer_taital">{{_('Nous contacter')}}</h2>
+                     <a class="footer_text" href=""></a>
+                     <a class="footer_text" href=""></a>
+
+                  </div>
+                  
+               </div>
+            </div>
+         </div>
+
+      <!-- footer section end -->
+      <!-- copyright section start -->
+      <div class="copyright_section">
+         <div class="container">
+            <div class="row">
+            <p class="copyright_text"> 2023© - Tous droits réservés | <a href="legal">Mentions légales</a> </p>
+            </div>
+            
+         </div>
+      </div>
+   </div>
+<!-- copyright section end -->
+<!-- Javascript files-->
+<script src="{{url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{url_for('static', filename='js/dropdown.js') }}"></script>
+<script src="{{url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{url_for('static', filename='js/jquery-3.0.0.min.js') }}"></script>
+<script src="{{url_for('static', filename='js/plugin.js') }}"></script>
+<!-- sidebar -->
+<script src="{{url_for('static', filename='js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script src="{{url_for('static', filename='js/custom.js') }}"></script>
+<!-- javascript -->
+<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+         var loaderDiv = document.getElementById('loaderid');
+         var foregroundDiv = document.getElementById('foregid');
+         // Show the div
+         foregroundDiv.style.display = 'block';
+         loaderDiv.style.display = 'block';
+         // Hide the div after 5 seconds
+         setTimeout(function() {
+            loaderDiv.style.display = 'none';
+            foregroundDiv.style.display = 'none';
+            }, 1000);
+    });
+
+      $(document).ready(function() {
+         $(".sousmenu-auditconseil").hide();
+         $(".sousmenu-fiscajuridique").hide();
+         $(".sousmenu-finance").hide();
+         
+         $(".dropdown-toggle").on("click", function() {
+            $(".sousmenu-auditconseil").hide();
+            $(".sousmenu-fiscajuridique").hide();
+            $(".sousmenu-finance").hide(); 
+         });
+
+         $(".auditconseil").on("mouseenter", function() {
+            $(".sousmenu-auditconseil").show();
+            $(".sousmenu-fiscajuridique").hide();
+            $(".sousmenu-finance").hide();
+
+         });
+         
+         $(".fiscajuridique").on("mouseenter", function() {
+            $(".sousmenu-fiscajuridique").show();
+            $(".sousmenu-auditconseil").hide();
+            $(".sousmenu-finance").hide();
+
+         });
+
+         $(".finance").on("mouseenter", function() {
+            $(".sousmenu-finance").show();
+            $(".sousmenu-fiscajuridique").hide();
+            $(".sousmenu-auditconseil").hide();
+
+         });
+
+         
+         
+
+         console.log('kkk')
+      });
+   </script>
+</body>
+
+</html>
