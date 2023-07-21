@@ -32,3 +32,8 @@ def before_request():
 def home():
     page = request.args.get('page', 1, type=int)
     return render_template('home.html')
+
+@main.route('/contactus', defaults={'lang_code':'en'})
+@main.route('/nouscontacter', defaults={'lang_code':'fr'})
+def nouscontacter():
+    return render_template('nouscontacter.html')
